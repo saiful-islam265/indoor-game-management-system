@@ -19,9 +19,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	$boardNumber = $_POST["boardNumber"];
 	$maxPlayers = $_POST["maxPlayers"];
 
-	// Validate form data (add more validation as needed)
-
-	// Insert data into the database
 	$check_table_query = "SHOW TABLES LIKE 'games'";
 	
 	$table_result = $conn->query($check_table_query);

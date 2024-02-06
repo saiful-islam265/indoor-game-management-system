@@ -1,5 +1,4 @@
 <?php
-// Assuming you have a connection to the database established
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -7,7 +6,6 @@ $dbname = 'indoor-game-management';
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
-// Check connection
 if ($conn->connect_error) {
 	die("Connection failed: " . $conn->connect_error);
 }
@@ -20,7 +18,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	$slotDate = $_POST["slotDate"];
 	$slotTime = $_POST["slotTime"];
 
-	// Validate form data (add more validation as needed)
 	$check_table_query = "SHOW TABLES LIKE 'bookings'";
 	
 	$table_result = $conn->query($check_table_query);
@@ -57,5 +54,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	}
 }
 
-// Close the database connection
 $conn->close();

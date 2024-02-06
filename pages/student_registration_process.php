@@ -1,5 +1,4 @@
 <?php
-// Assuming you have a connection to the database established
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -18,8 +17,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	$studentName = $_POST["studentName"];
 	$studentID = $_POST["studentID"];
 
-	// Validate form data (add more validation as needed)
-
 	$check_table_query = "SHOW TABLES LIKE 'students'";
 	
 	$table_result = $conn->query($check_table_query);
@@ -33,7 +30,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		$conn->query($create_table_query);
 	}
 
-	// Insert data into the database
 	$sql = "INSERT INTO students (studentName, studentID) VALUES ('$studentName', '$studentID')";
 
 	if ($conn->query($sql) === TRUE) {
@@ -44,6 +40,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	}
 }
 
-// Close the database connection
 $conn->close();
 ?>
