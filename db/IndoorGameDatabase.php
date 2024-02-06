@@ -1,9 +1,9 @@
 <?php
 class IndoorGameDatabase {
-	private $servername = "your_server_name";
-	private $username = "your_username";
-	private $password = "your_password";
-	private $dbname = "indoor_game_management_system"; // Change to your actual database name
+	private $servername = "localhost";
+	private $username = "root";
+	private $password = "";
+	private $dbname = "indoor-game-management"; // Change to your actual database name
 	private $conn;
 
 	// Constructor to establish a database connection

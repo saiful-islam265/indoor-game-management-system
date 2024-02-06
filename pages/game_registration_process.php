@@ -1,11 +1,11 @@
 <?php
 // Assuming you have a connection to the database established
-$servername = "your_server_name";
-$username = "your_username";
-$password = "your_password";
-$dbname = "your_database_name";
+$servername = 'localhost';
+$username = 'root';
+$password = '';
+$dbname = 'indoor-game-management';
 
-$conn = new mysqli($servername, $username, $password, $dbname);
+$conn = new mysqli($servername, $username, $password, $dbname );
 
 // Check connection
 if ($conn->connect_error) {
@@ -23,10 +23,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	// Validate form data (add more validation as needed)
 
 	// Insert data into the database
+	$check_table_query = "SHOW TABLES LIKE 'games'";
+	
+	$table_result = $conn->query($check_table_query);
+	if ($table_result->num_rows == 0) {
+		// Table doesn't exist, create it
+		$create_table_query = "CREATE TABLE games (
+			id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+			gameName VARCHAR(255) NOT NULL,
+			gameType VARCHAR(255) NOT NULL,
+			boardNumber INT(6) NOT NULL,
+			maxPlayers INT(10) NOT NULL
+		)";
+		$conn->query($create_table_query);
+	}
 	$sql = "INSERT INTO games (gameName, gameType, boardNumber, maxPlayers) VALUES ('$gameName', '$gameType', '$boardNumber', '$maxPlayers')";
 
 	if ($conn->query($sql) === TRUE) {
-		echo "Game registration successful!";
+		header("Location: ../index.php");
+		exit;
 	} else {
 		echo "Error: " . $sql . "<br>" . $conn->error;
 	}

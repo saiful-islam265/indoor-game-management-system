@@ -1,9 +1,9 @@
 <?php
 // Assuming you have a connection to the database established
-$servername = "your_server_name";
-$username = "your_username";
-$password = "your_password";
-$dbname = "your_database_name";
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = 'indoor-game-management';
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
@@ -21,6 +21,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	$slotTime = $_POST["slotTime"];
 
 	// Validate form data (add more validation as needed)
+	$check_table_query = "SHOW TABLES LIKE 'bookings'";
+	
+	$table_result = $conn->query($check_table_query);
+	if ($table_result->num_rows == 0) {
+		// Table doesn't exist, create it
+		$create_table_query = "CREATE TABLE bookings (
+			id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+			studentID INT(60) NOT NULL,
+			gameID INT(60) NOT NULL,
+			slotDate DATE NOT NULL,
+			slotTime TIME NOT NULL
+		)";
+		$conn->query($create_table_query);
+	}
 
 	// Check for slot conflicts
 	$conflictCheck = "SELECT * FROM bookings WHERE gameID = '$gameID' AND slotDate = '$slotDate' AND slotTime = '$slotTime'";
@@ -31,10 +45,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		echo "Slot booking failed. The slot is already booked by another student.";
 	} else {
 		// No conflict, proceed with the booking
+
 		$insertBooking = "INSERT INTO bookings (studentID, gameID, slotDate, slotTime) VALUES ('$studentID', '$gameID', '$slotDate', '$slotTime')";
 
 		if ($conn->query($insertBooking) === TRUE) {
-			echo "Slot booking successful!";
+			header("Location: ../index.php");
+			exit;
 		} else {
 			echo "Error: " . $insertBooking . "<br>" . $conn->error;
 		}

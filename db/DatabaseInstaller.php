@@ -86,6 +86,5 @@ class DatabaseInstaller {
 
 // Replace 'your_server', 'your_username', 'your_password', and 'indoor_game_management_system'
 // with your actual MySQL server details and desired database name.
-$installer = new DatabaseInstaller('localhost', 'root', '', 'indoor_game_management_system');
+$installer = new DatabaseInstaller('localhost', 'root', '', 'indoor-game-management');
 $installer->createDatabaseAndTables();
-?>

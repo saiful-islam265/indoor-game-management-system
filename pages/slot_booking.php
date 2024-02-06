@@ -33,7 +33,7 @@
 
     <br>
 
-    <a href="/index.php" class="btn btn-secondary">Go Back to Home Page</a>
+    <a href="../index.php" class="btn btn-secondary">Go Back to Home Page</a>
 </div>
 
 <!-- Bootstrap JS and Popper.js (required for some Bootstrap components) -->
