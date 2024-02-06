@@ -28,8 +28,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		// Table doesn't exist, create it
 		$create_table_query = "CREATE TABLE bookings (
 			id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-			studentID INT(60) NOT NULL,
-			gameID INT(60) NOT NULL,
+			studentID INT(11) NOT NULL,
+			gameID INT(11) NOT NULL,
 			slotDate DATE NOT NULL,
 			slotTime TIME NOT NULL
 		)";

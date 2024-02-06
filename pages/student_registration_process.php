@@ -28,7 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		$create_table_query = "CREATE TABLE students (
 			id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 			studentName VARCHAR(255) NOT NULL,
-			studentID INT(60) NOT NULL
+			studentID INT(11) NOT NULL
 		)";
 		$conn->query($create_table_query);
 	}

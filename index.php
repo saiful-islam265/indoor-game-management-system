@@ -50,10 +50,9 @@
 					INNER JOIN games ON bookings.gameID = games.id
 				";
 				$result = $conn->query($sql);
-				print_r($result);
 
 				// Close the database connection
-				//$conn->close();
+				$conn->close();
                 if ($result->num_rows > 0) {
                     // Output data of each row
                     while ($row = $result->fetch_assoc()) {
