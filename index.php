@@ -10,11 +10,11 @@
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-	<a class="navbar-brand" href="#">Game Management System</a>
+	<a class="navbar-brand" href="/">Game Management System</a>
 	<ul class="navbar-nav mr-auto">
-		<li class="nav-item"><a class="nav-link" href="game_registration.php">Game Registration</a></li>
-		<li class="nav-item"><a class="nav-link" href="student_registration.php">Student Registration</a></li>
-		<li class="nav-item"><a class="nav-link" href="slot_booking.php">Slot Booking</a></li>
+		<li class="nav-item"><a class="nav-link" href="pages/game_registration.php">Game Registration</a></li>
+		<li class="nav-item"><a class="nav-link" href="pages/student_registration.php">Student Registration</a></li>
+		<li class="nav-item"><a class="nav-link" href="pages/slot_booking.php">Slot Booking</a></li>
 	</ul>
 </nav>
 </body>
